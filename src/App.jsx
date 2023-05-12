@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { AiOutlineArrowUp } from "react-icons/ai";
+import Main from "./Screens/Main";
+import AboutMe from "./Screens/AboutMe";
 
+import DarkScreen from "./components/DarkScreen";
+import LightScreen from "./components/LightScreen";
+import ContactMe from "./Screens/ContactMe";
+import DevideSpace from "./components/DevideSpace";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-fit w-full  bg-dark/70 relative font-open-sans ">
+      <div
+        onClick={() => {
+          document.getElementById("top").scrollIntoView({ behavior: "smooth" });
+        }}
+        className="rounded-full w-[3rem] h-[3rem] group bg-primary/10 hover:bg-primary fixed right-[3%] bottom-[3%] z-50 cursor-pointer  flex justify-center items-center  "
+      >
+        <AiOutlineArrowUp className="w-[1.5rem] h-fit fill-white/10 group-hover:fill-white" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <LightScreen>
+        <Main />
+      </LightScreen>
+      <DevideSpace />
+      <LightScreen>
+        <AboutMe />
+      </LightScreen>
+      <DevideSpace />
+      <DarkScreen>
+        <ContactMe />
+      </DarkScreen>
+    </div>
+  );
 }
 
-export default App
+export default App;
